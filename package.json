@@ -1,7 +1,6 @@
 {
   "name": "my-weather-app",
   "scripts": {
-    "build": "yarn",
-    "start": "yarnStart"
+    "build": "yarn"
   }
 }
