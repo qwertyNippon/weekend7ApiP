@@ -5,6 +5,39 @@ const searchB = document.querySelector('.search input');
 const searchBtn = document.querySelector('.search button');
 const weatherIcon = document.querySelector('.weather-icon');
 
+const findMyCity = () => {
+    const status = document.querySelector('.status');
+    const cityEntry = document.getElementById('cityEntry');
+
+    let city = {};
+
+    const success = (position) => {
+        console.log(position)
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+
+        fetch(geoApiUrl)
+            .then(res => res.json())
+            .then(data => {
+                city = data.city
+                cityEntry.value = city;
+                checkWeather(city)
+
+            })
+            
+        }
+        
+        const error = () => {
+            wrong = 'Not able to retrieve your location';
+        }
+        
+        // console.log(city)
+        // success()
+        navigator.geolocation.getCurrentPosition(success,error)
+}
+
 
 async function checkWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
@@ -24,24 +57,28 @@ async function checkWeather(city) {
     document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h';
 
         if(data.weather[0].main == 'Clouds'){
-            weatherIcon.src = '/static/img/clouds.png';
+            weatherIcon.src = 'https://i.imgur.com/I3KClPQ.png';
         }
         else if(data.weather[0].main == 'Clear'){
-            weatherIcon.src = '/static/img/clear.png';
+            weatherIcon.src = 'https://i.imgur.com/wwF4Myd.png';
 
         }
         
         else if(data.weather[0].main == 'Rain'){
-            weatherIcon.src = '/static/img/rain.png';
+            weatherIcon.src = 'https://i.imgur.com/M6IXiy6.png';
 
         }
         
         else if(data.weather[0].main == 'Drizzle'){
-            weatherIcon.src = '/static/img/drizzle.png';
+            weatherIcon.src = 'https://i.imgur.com/UwM04RA.png';
 
         }
         else if(data.weather[0].main == 'Mist'){
-            weatherIcon.src = '/static/img/mist.png';
+            weatherIcon.src = 'https://i.imgur.com/3T4JALh.png';
+
+        }
+        else if(data.weather[0].main == 'Snow'){
+            wImg.src = 'https://i.imgur.com/VKAVCa9.png';
 
         }
 
@@ -61,3 +98,8 @@ let input = document.querySelector('input');
 searchBtn.addEventListener('click', ()=> {
     checkWeather(searchB.value);
 });
+
+window.onload = function() {
+    findMyCity()
+    // checkWeather(city)
+};

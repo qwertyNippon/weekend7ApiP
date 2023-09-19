@@ -16,20 +16,21 @@
 
 <body>
   <header>
-    <!-- place navbar here -->
+    <!-- place navbar here --> 
   </header>
   <main>
     <div class="card">
         <h4>Language expansion to Japanese coming soon!!!</h4>
+        <h1 class="status"></h1>
         <div class="search">
-            <input type="text" placeholder="enter city name" 
+            <input  onload="findMyCity()" type="text" id="cityEntry" placeholder="enter city name" 
             spellcheck="false">
             <button><img src="/static/img/search.png" alt="image for search"></button>
         </div>
         <div class="error">
             <p>Invalid Entry</p>
         </div>
-        <div class="weather">
+        <div class="weather status">
             <img src="/static/img/rain.png" alt="temp image" class="weather-icon">
             <h1 class="temp"></h1>
             <h2 class="city"></h2>
