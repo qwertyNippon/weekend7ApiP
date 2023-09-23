@@ -1,4 +1,8 @@
 {
     "name": "my-weather-app",
-    "scripts": {}
+    "scripts": {
+      "start": "run",
+      "build": "babel src -d lib",
+      "test": "jest"
+    }
   }
