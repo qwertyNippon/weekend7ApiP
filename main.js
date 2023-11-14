@@ -38,13 +38,16 @@ const findMyCity = () => {
         navigator.geolocation.getCurrentPosition(success,error)
 }
 
+let cities = []
 // *****************************
 const textCity  = () => {
     fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
     .then(res => res.json())
     .then(data => {
         cities = data.map(city => {
-
+            const card = userTemplate.content.cloneNode(true).children[0]
+            const cityLst = card.querySelector('[data-body]')
+            cityLst.textContent = data.city
         })
     })
 }
