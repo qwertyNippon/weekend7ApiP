@@ -97,3 +97,19 @@ body{
 .buffer{
     padding: 45px;
 }
+
+.data-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 4px;
+    margin-top: 16px;
+}
+
+.card  .body {
+    font-size: .8rem;
+    color: #777;
+}
+
+.hide{
+    display: none;
+}

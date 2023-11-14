@@ -4,10 +4,25 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
 const searchB = document.querySelector('.search input');
 const searchBtn = document.querySelector('.search button');
 const weatherIcon = document.querySelector('.weather-icon');
+const CardContainer = document.querySelector('[data-cards-container]');
 
 const findMyCity = () => {
     const status = document.querySelector('.status');
     const cityEntry = document.getElementById('cityEntry');
+
+    let cities = [] 
+
+    fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
+    .then(res => res.json())
+    .then(data => {
+        cities = data.map(city => {
+            const card = userTemplate.content.cloneNode(true).children[0]
+            const cityLst = card.querySelector('[data-body]')
+            cityLst.textContent = city.city
+            CardContainer.append(card)
+            return { city : cityLst.textContent}
+        })
+    })
 
     let city = {};
 
@@ -38,16 +53,28 @@ const findMyCity = () => {
         navigator.geolocation.getCurrentPosition(success,error)
 }
 
-let cities = []
+
+
 // *****************************
 const textCity  = () => {
+    searchInput.addEventListener("input", event => {
+        const value = event.target.value.toLowerCase()
+        cities.forEach(city => {
+          const isVisible =
+          cityLst.textContent.toLowerCase().includes(value)
+          city.element.classList.toggle("hide", !isVisible)
+        })
+        })
+
     fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
     .then(res => res.json())
     .then(data => {
         cities = data.map(city => {
             const card = userTemplate.content.cloneNode(true).children[0]
             const cityLst = card.querySelector('[data-body]')
-            cityLst.textContent = data.city
+            cityLst.textContent = city.city
+            CardContainer.append(card)
+            return { city : cityLst.textContent}
         })
     })
 }
@@ -103,6 +130,17 @@ async function checkWeather(city) {
 
 let input = document.querySelector('input');
     input.addEventListener('keyup', (event) => {
+        textCity()
+        // ****************
+        // searchInput.addEventListener("input", event => {
+        // const value = event.target.value.toLowerCase()
+        // cities.forEach(city => {
+        //   const isVisible =
+        //   cityLst.textContent.toLowerCase().includes(value)
+        //   city.element.classList.toggle("hide", !isVisible)
+        // })
+        // })
+        // *****************
         if (event.key === 'Enter' || event.key === 'NumpadEnter') {
             checkWeather(searchB.value);
         }
@@ -117,3 +155,4 @@ window.onload = function() {
     findMyCity()
     // checkWeather(city)
 };
+
