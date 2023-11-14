@@ -38,6 +38,17 @@ const findMyCity = () => {
         navigator.geolocation.getCurrentPosition(success,error)
 }
 
+// *****************************
+const textCity  = () => {
+    fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
+    .then(res => res.json())
+    .then(data => {
+        cities = data.map(city => {
+
+        })
+    })
+}
+// *****************************
 
 async function checkWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
