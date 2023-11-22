@@ -97,7 +97,7 @@ body{
 .buffer{
     padding: 45px;
 }
-
+/* ****************************** */
 .data-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -110,6 +110,13 @@ body{
     color: #777;
 }
 
+.search-wrapper {
+    display: flex;
+    /* flex-direction: column; */
+    gap: .25rem;
+  }
+
 .hide{
     display: none;
 }
+

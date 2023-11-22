@@ -4,25 +4,75 @@ const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
 const searchB = document.querySelector('.search input');
 const searchBtn = document.querySelector('.search button');
 const weatherIcon = document.querySelector('.weather-icon');
-const CardContainer = document.querySelector('[data-cards-container]');
+// const CardTemplate = document.querySelector("[data-card-template]")
+// const CardContainer = document.querySelector('[data-cards-container]');
+const searchInput = document.querySelector("[data-search]")
+
+
 
 const findMyCity = () => {
     const status = document.querySelector('.status');
     const cityEntry = document.getElementById('cityEntry');
+    
+    // testing chat code below
+    const CardTemplate = document.getElementById('[data-card-template]');
+    const CardContainer = document.getElementById('[data-cards-container]');
+    // const test code end
+    // let cities = [];
 
-    let cities = [] 
+    // searchInput.addEventListener("input", event => {
+    //     console.log('listener');
+    //     const value = event.target.value.toLowerCase();
 
-    fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
-    .then(res => res.json())
-    .then(data => {
-        cities = data.map(city => {
-            const card = userTemplate.content.cloneNode(true).children[0]
-            const cityLst = card.querySelector('[data-body]')
-            cityLst.textContent = city.city
-            CardContainer.append(card)
-            return { city : cityLst.textContent}
-        })
-    })
+    //     cities.forEach(city => {
+    //         const isVisible = city.city.toLowerCase().includes(value);
+    //         city.element.classList.toggle("hide", !isVisible)
+    //     });
+    // });
+
+    // const latitude = {latitude}
+    // const longitude = {longitude}
+
+    // fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+    // .then(res => res.json())
+    // .then(data => {
+    //     const citiesData = Object.values(data);
+    //     // const outPut = object.values(data);
+    //     cities = citiesData.map(city => {
+    //         const card = CardTemplate.content.cloneNode(true).querySelector('.city-card');
+    //         const cityElement = card.querySelector('[data-body]');
+    //         cityElement.textContent = city.city;
+    //         CardContainer.append(card);
+
+    //         return { city : city.city, element: card}
+    //     });
+    // });
+
+    // let cities = [] 
+
+    // searchInput.addEventListener("input", event => {
+    //     console.log('listener')
+    //     const value = event.target.value.toLowerCase()
+    //     cities.forEach(city => {
+    //         const isVisible =
+    //             city.textContent.toLowerCase().includes(value)
+    //             city.element.classList.toggle("hide", !isVisible)
+    //     })
+    // })
+
+    // fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
+    // .then(res => res.json())
+    // .then(data => {
+    //     const outPut = Object.values(data);
+    //     // const outPut = object.values(data);
+    //         outPut.map(city => {
+    //         const card = CardTemplate.content.cloneNode(true).children[0]
+    //         const cityLst = card.querySelector('[data-body]')
+    //         cityLst.textContent = city.city
+    //         CardContainer.append(card)
+    //         return { city : cityLst.textContent, element: card}
+    //     })
+    // })
 
     let city = {};
 
@@ -51,33 +101,71 @@ const findMyCity = () => {
         // console.log(city)
         // success()
         navigator.geolocation.getCurrentPosition(success,error)
+
+        let cities = [];
+
+        searchInput.addEventListener("input", event => {
+            console.log('listener');
+            const value = event.target.value.toLowerCase();
+    
+            cities.forEach(city => {
+                const isVisible = city.city.toLowerCase().includes(value);
+                city.element.classList.toggle("hide", !isVisible)
+            });
+        });
+    
+        // const latitude = latitude
+        // const longitude = {longitude}
+
+        // note: changed the longi - and lati... to see if it we need it. 
+    
+        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en`)
+        .then(res => res.json())
+        .then(data => {
+            const citiesData = Object.values(data);
+            // const outPut = object.values(data);
+            cities = citiesData.map(city => {
+                const card = CardTemplate.content.cloneNode(true).querySelector('.city-card');
+                const cityElement = card.querySelector('[data-body]');
+                cityElement.textContent = city.city;
+                CardContainer.append(card);
+    
+                return { city : city.city, element: card}
+            });
+        });
 }
 
 
 
 // *****************************
-const textCity  = () => {
-    searchInput.addEventListener("input", event => {
-        const value = event.target.value.toLowerCase()
-        cities.forEach(city => {
-          const isVisible =
-          cityLst.textContent.toLowerCase().includes(value)
-          city.element.classList.toggle("hide", !isVisible)
-        })
-        })
 
-    fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
-    .then(res => res.json())
-    .then(data => {
-        cities = data.map(city => {
-            const card = userTemplate.content.cloneNode(true).children[0]
-            const cityLst = card.querySelector('[data-body]')
-            cityLst.textContent = city.city
-            CardContainer.append(card)
-            return { city : cityLst.textContent}
-        })
-    })
-}
+// let users = []
+
+// const textCity = () => {
+//     console.log('textC activate')
+//     searchInput.addEventListener("input", event => {
+//         console.log('listener')
+//         const value = event.target.value.toLowerCase()
+//         cities.forEach(city => {
+//             const isVisible =
+//                 cityLst.textContent.toLowerCase().includes(value)
+//                 city.element.classList.toggle("hide", !isVisible)
+//         })
+//     })
+
+//     fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
+//         .then(res => res.json())
+//         .then(data => {
+//             cities = data.map(city => {
+//                 const card = CardTemplate.content.cloneNode(true).children[0]
+//                 const cityLst = card.querySelector('[data-body]')
+//                 cityLst.textContent = city
+//                 CardContainer.append(card)
+//                 return cityLst.textContent
+                // return { city: cityLst.textContent }
+//             })
+//         })
+// }
 // *****************************
 
 async function checkWeather(city) {
@@ -130,7 +218,8 @@ async function checkWeather(city) {
 
 let input = document.querySelector('input');
     input.addEventListener('keyup', (event) => {
-        textCity()
+        // textCity()
+        console.log('textC 2')
         // ****************
         // searchInput.addEventListener("input", event => {
         // const value = event.target.value.toLowerCase()

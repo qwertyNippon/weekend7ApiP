@@ -22,14 +22,14 @@
     <div class="card">
         <h4>Language expansion to Japanese coming soon!!!</h4>
         <h1 class="status"></h1>
-        <div class="search">
-            <input  onload="findMyCity()" type="text" id="cityEntry" placeholder="enter city name" 
-            spellcheck="false">
+        <div class="search search-wrapper" for="search">
+            <input onload="findMyCity()" type="text" id="cityEntry" placeholder="enter city name" 
+            spellcheck="false" data-search>
             <button><img src="/static/img/search.png" alt="image for search"></button>
         </div>
         <div class="data-cards" data-cards-container></div>
-        <template data-user-template>
-          <div class="card">
+        <template data-card-template>
+          <div class="card city-card">
             <div class="body" data-body></div>
           </div>
         </template>
