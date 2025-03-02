@@ -1,9 +1,9 @@
-import cloudsImage from './static/img/clouds.png';
-import clearImage from './static/img/clear.png';
-import rainImage from './static/img/rain.png';
-import drizzleImage from './static/img/drizzle.png';
-import mistImage from './static/img/mist.png';
-import snowImage from './static/img/snow.png';
+const  cloudsImage = './static/img/clouds.png';
+const  clearImage = './static/img/clear.png';
+const  rainImage = './static/img/rain.png';
+const  drizzleImage = './static/img/drizzle.png';
+const  mistImage = './static/img/mist.png';
+const  snowImage = './static/img/snow.png';
 
 
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
