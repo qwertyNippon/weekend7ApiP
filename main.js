@@ -1,3 +1,11 @@
+import cloudsImage from './static/img/clouds.png';
+import clearImage from './static/img/clear.png';
+import rainImage from './static/img/rain.png';
+import drizzleImage from './static/img/drizzle.png';
+import mistImage from './static/img/mist.png';
+import snowImage from './static/img/snow.png';
+
+
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -185,31 +193,31 @@ async function checkWeather(city) {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h';
 
-        if(data.weather[0].main == 'Clouds'){
-            weatherIcon.src = 'https://i.imgur.com/I3KClPQ.png';
-        }
-        else if(data.weather[0].main == 'Clear'){
-            weatherIcon.src = 'https://i.imgur.com/wwF4Myd.png';
+    if(data.weather[0].main === 'Clouds'){
+        wImg.src = cloudsImage;
+    }
+    else if(data.weather[0].main === 'Clear'){
+        wImg.src = clearImage;
 
-        }
-        
-        else if(data.weather[0].main == 'Rain'){
-            weatherIcon.src = 'https://i.imgur.com/M6IXiy6.png';
+    }
+    
+    else if(data.weather[0].main === 'Rain'){
+        wImg.src = rainImage;
 
-        }
-        
-        else if(data.weather[0].main == 'Drizzle'){
-            weatherIcon.src = 'https://i.imgur.com/UwM04RA.png';
+    }
+    
+    else if(data.weather[0].main === 'Drizzle'){
+        wImg.src = drizzleImage;
 
-        }
-        else if(data.weather[0].main == 'Mist'){
-            weatherIcon.src = 'https://i.imgur.com/3T4JALh.png';
+    }
+    else if(data.weather[0].main === 'Mist'){
+        wImg.src = mistImage;
 
-        }
-        else if(data.weather[0].main == 'Snow'){
-            wImg.src = 'https://i.imgur.com/VKAVCa9.png';
+    }
+    else if(data.weather[0].main === 'Snow'){
+        wImg.src = snowImage;
 
-        }
+    }
 
         document.querySelector('.weather').style.display = 'block';
         document.querySelector('.error').style.display = 'none';
