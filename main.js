@@ -193,28 +193,28 @@ async function checkWeather(city) {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h';
 
-    if(data.weather[0].main === 'Clouds'){
+    if(data.weather[0].main == 'Clouds'){
         wImg.src = cloudsImage;
     }
-    else if(data.weather[0].main === 'Clear'){
+    else if(data.weather[0].main == 'Clear'){
         wImg.src = clearImage;
 
     }
     
-    else if(data.weather[0].main === 'Rain'){
+    else if(data.weather[0].main == 'Rain'){
         wImg.src = rainImage;
 
     }
     
-    else if(data.weather[0].main === 'Drizzle'){
+    else if(data.weather[0].main == 'Drizzle'){
         wImg.src = drizzleImage;
 
     }
-    else if(data.weather[0].main === 'Mist'){
+    else if(data.weather[0].main == 'Mist'){
         wImg.src = mistImage;
 
     }
-    else if(data.weather[0].main === 'Snow'){
+    else if(data.weather[0].main == 'Snow'){
         wImg.src = snowImage;
 
     }
