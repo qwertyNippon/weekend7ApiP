@@ -28,60 +28,6 @@ const findMyCity = () => {
     // const test code end
     // let cities = [];
 
-    // searchInput.addEventListener("input", event => {
-    //     console.log('listener');
-    //     const value = event.target.value.toLowerCase();
-
-    //     cities.forEach(city => {
-    //         const isVisible = city.city.toLowerCase().includes(value);
-    //         city.element.classList.toggle("hide", !isVisible)
-    //     });
-    // });
-
-    // const latitude = {latitude}
-    // const longitude = {longitude}
-
-    // fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-    // .then(res => res.json())
-    // .then(data => {
-    //     const citiesData = Object.values(data);
-    //     // const outPut = object.values(data);
-    //     cities = citiesData.map(city => {
-    //         const card = CardTemplate.content.cloneNode(true).querySelector('.city-card');
-    //         const cityElement = card.querySelector('[data-body]');
-    //         cityElement.textContent = city.city;
-    //         CardContainer.append(card);
-
-    //         return { city : city.city, element: card}
-    //     });
-    // });
-
-    // let cities = [] 
-
-    // searchInput.addEventListener("input", event => {
-    //     console.log('listener')
-    //     const value = event.target.value.toLowerCase()
-    //     cities.forEach(city => {
-    //         const isVisible =
-    //             city.textContent.toLowerCase().includes(value)
-    //             city.element.classList.toggle("hide", !isVisible)
-    //     })
-    // })
-
-    // fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
-    // .then(res => res.json())
-    // .then(data => {
-    //     const outPut = Object.values(data);
-    //     // const outPut = object.values(data);
-    //         outPut.map(city => {
-    //         const card = CardTemplate.content.cloneNode(true).children[0]
-    //         const cityLst = card.querySelector('[data-body]')
-    //         cityLst.textContent = city.city
-    //         CardContainer.append(card)
-    //         return { city : cityLst.textContent, element: card}
-    //     })
-    // })
-
     let city = {};
 
     const success = (position) => {
@@ -122,11 +68,6 @@ const findMyCity = () => {
             });
         });
     
-        // const latitude = latitude
-        // const longitude = {longitude}
-
-        // note: changed the longi - and lati... to see if it we need it. 
-    
         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en`)
         .then(res => res.json())
         .then(data => {
@@ -143,38 +84,6 @@ const findMyCity = () => {
         });
 }
 
-
-
-// *****************************
-
-// let users = []
-
-// const textCity = () => {
-//     console.log('textC activate')
-//     searchInput.addEventListener("input", event => {
-//         console.log('listener')
-//         const value = event.target.value.toLowerCase()
-//         cities.forEach(city => {
-//             const isVisible =
-//                 cityLst.textContent.toLowerCase().includes(value)
-//                 city.element.classList.toggle("hide", !isVisible)
-//         })
-//     })
-
-//     fetch('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$%7Blatitude%7D&longitude=$%7Blongitude%7D&localityLanguage=en')
-//         .then(res => res.json())
-//         .then(data => {
-//             cities = data.map(city => {
-//                 const card = CardTemplate.content.cloneNode(true).children[0]
-//                 const cityLst = card.querySelector('[data-body]')
-//                 cityLst.textContent = city
-//                 CardContainer.append(card)
-//                 return cityLst.textContent
-                // return { city: cityLst.textContent }
-//             })
-//         })
-// }
-// *****************************
 
 async function checkWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
@@ -218,32 +127,6 @@ async function checkWeather(city) {
         snowImage;
 
     }
-
-    // if(data.weather[0].main == 'Clouds'){
-    //     wImg.src = cloudsImage;
-    // }
-    // else if(data.weather[0].main == 'Clear'){
-    //     wImg.src = clearImage;
-
-    // }
-    
-    // else if(data.weather[0].main == 'Rain'){
-    //     wImg.src = rainImage;
-
-    // }
-    
-    // else if(data.weather[0].main == 'Drizzle'){
-    //     wImg.src = drizzleImage;
-
-    // }
-    // else if(data.weather[0].main == 'Mist'){
-    //     wImg.src = mistImage;
-
-    // }
-    // else if(data.weather[0].main == 'Snow'){
-    //     wImg.src = snowImage;
-
-    // }
 
         document.querySelector('.weather').style.display = 'block';
         document.querySelector('.error').style.display = 'none';
