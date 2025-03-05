@@ -110,10 +110,10 @@ async function checkWeather(city) {
 
     }
     
-    else if(data.weather[0].main === 'Rain'){
-        rainImage;
+    // else if(data.weather[0].main === 'Rain'){
+    //     rainImage;
 
-    }
+    // }
     
     else if(data.weather[0].main === 'Drizzle'){
         drizzleImage;
