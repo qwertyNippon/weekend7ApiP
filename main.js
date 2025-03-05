@@ -102,28 +102,28 @@ async function checkWeather(city) {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h';
 
-    if(data.weather[0].main == 'Clouds'){
+    if(data.weather[0].main === 'Clouds'){
         cloudsImage;
     }
-    else if(data.weather[0].main == 'Clear'){
+    else if(data.weather[0].main === 'Clear'){
         clearImage;
 
     }
     
-    else if(data.weather[0].main == 'Rain'){
+    else if(data.weather[0].main === 'Rain'){
         rainImage;
 
     }
     
-    else if(data.weather[0].main == 'Drizzle'){
+    else if(data.weather[0].main === 'Drizzle'){
         drizzleImage;
 
     }
-    else if(data.weather[0].main == 'Mist'){
+    else if(data.weather[0].main === 'Mist'){
         mistImage;
 
     }
-    else if(data.weather[0].main == 'Snow'){
+    else if(data.weather[0].main === 'Snow'){
         snowImage;
 
     }
