@@ -1,9 +1,9 @@
-const  cloudsImage = './static/img/clouds.png';
-const  clearImage = './static/img/clear.png';
-const  rainImage = './static/img/rain.png';
-const  drizzleImage = './static/img/drizzle.png';
-const  mistImage = './static/img/mist.png';
-const  snowImage = './static/img/snow.png';
+// const  cloudsImage = './static/img/clouds.png';
+// const  clearImage = './static/img/clear.png';
+// const  rainImage = './static/img/rain.png';
+// const  drizzleImage = './static/img/drizzle.png';
+// const  mistImage = './static/img/mist.png';
+// const  snowImage = './static/img/snow.png';
 
 
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
