@@ -160,6 +160,6 @@ searchBtn.addEventListener('click', ()=> {
 
 window.onload = function() {
     findMyCity()
-    // checkWeather(city)
+    checkWeather(city)
 };
 
