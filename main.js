@@ -1,9 +1,9 @@
-// const  cloudsImage = './static/img/clouds.png';
-// const  clearImage = './static/img/clear.png';
-// const  rainImage = './static/img/rain.png';
-// const  drizzleImage = './static/img/drizzle.png';
-// const  mistImage = './static/img/mist.png';
-// const  snowImage = './static/img/snow.png';
+const  cloudsImage = './static/img/clouds.png';
+const  clearImage = './static/img/clear.png';
+const  rainImage = './static/img/rain.png';
+const  drizzleImage = './static/img/drizzle.png';
+const  mistImage = './static/img/mist.png';
+const  snowImage = './static/img/snow.png';
 
 
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
@@ -105,25 +105,25 @@ async function checkWeather(city) {
     if(data.weather[0].main = 'Clouds'){
         cloudsImage;
     }
-    else if(data.weather[0].main = 'Clear'){
+    else if(data.weather[0].main === 'Clear'){
         clearImage;
 
     }
     
-    else if(data.weather[0].main = 'Rain'){
+    else if(data.weather[0].main === 'Rain'){
         rainImage;
 
     }
     
-    else if(data.weather[0].main = 'Drizzle'){
+    else if(data.weather[0].main === 'Drizzle'){
         drizzleImage;
 
     }
-    else if(data.weather[0].main = 'Mist'){
+    else if(data.weather[0].main === 'Mist'){
         mistImage;
 
     }
-    else if(data.weather[0].main = 'Snow'){
+    else if(data.weather[0].main === 'Snow'){
         snowImage;
 
     }
