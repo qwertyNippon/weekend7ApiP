@@ -5,7 +5,6 @@ const  drizzleImage = './static/img/drizzle.png';
 const  mistImage = './static/img/mist.png';
 const  snowImage = './static/img/snow.png';
 
-
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
 const searchB = document.querySelector('.search input');
