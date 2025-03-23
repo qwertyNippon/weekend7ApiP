@@ -136,4 +136,3 @@ searchBtn.addEventListener('click', ()=> {
 window.onload = function() {
     findMyCity()
 };
-
