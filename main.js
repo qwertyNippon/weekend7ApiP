@@ -8,13 +8,10 @@ const  snowImage = './static/img/snow.png';
 
 const apiKey = '8af4e71eae5d6475836fe6ff020f68a8';
 const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
-// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 const searchB = document.querySelector('.search input');
 const searchBtn = document.querySelector('.search button');
 const weatherIcon = document.querySelector('.weather-icon');
 const CardContainer = document.querySelector('[data-cards-container]');
-// const CardTemplate = document.querySelector("[data-card-template]")
-// const CardContainer = document.querySelector('[data-cards-container]');
 const searchInput = document.querySelector("[data-search]")
 
 
@@ -27,7 +24,6 @@ const findMyCity = () => {
     const CardTemplate = document.getElementById('[data-card-template]');
     const CardContainer = document.getElementById('[data-cards-container]');
     // const test code end
-    // let cities = [];
 
     let city = {};
 
@@ -53,8 +49,6 @@ const findMyCity = () => {
             wrong = 'Not able to retrieve your location';
         }
         
-        // console.log(city)
-        // success()
         navigator.geolocation.getCurrentPosition(success,error)
 
         let cities = [];
@@ -73,7 +67,6 @@ const findMyCity = () => {
         .then(res => res.json())
         .then(data => {
             const citiesData = Object.values(data);
-            // const outPut = object.values(data);
             cities = citiesData.map(city => {
                 const card = CardTemplate.content.cloneNode(true).querySelector('.city-card');
                 const cityElement = card.querySelector('[data-body]');
@@ -88,8 +81,6 @@ const findMyCity = () => {
 
 async function checkWeather(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-    // const response = await fetch(apiUrl + city +`&appid=${apiKey}`);
-
 
     if (response.status == 404){
         document.querySelector('.error').style.display = 'block';
@@ -136,18 +127,7 @@ async function checkWeather(city) {
 
 let input = document.querySelector('input');
     input.addEventListener('keyup', (event) => {
-        // textCity()
-        console.log('textC 2')
-        // ****************
-        // searchInput.addEventListener("input", event => {
-        // const value = event.target.value.toLowerCase()
-        // cities.forEach(city => {
-        //   const isVisible =
-        //   cityLst.textContent.toLowerCase().includes(value)
-        //   city.element.classList.toggle("hide", !isVisible)
-        // })
-        // })
-        // *****************
+
         if (event.key === 'Enter' || event.key === 'NumpadEnter') {
             checkWeather(searchB.value);
         }
@@ -160,6 +140,5 @@ searchBtn.addEventListener('click', ()=> {
 
 window.onload = function() {
     findMyCity()
-    // checkWeather(city)
 };
 
