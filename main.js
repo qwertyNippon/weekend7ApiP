@@ -21,8 +21,8 @@ const findMyCity = () => {
     const cityEntry = document.getElementById('cityEntry');
     
     // testing chat code below
-    const CardTemplate = document.getElementById('[data-card-template]');
-    const CardContainer = document.getElementById('[data-cards-container]');
+    // const CardTemplate = document.getElementById('[data-card-template]');
+    // const CardContainer = document.getElementById('[data-cards-container]');
     // const test code end
 
     let city = {};
