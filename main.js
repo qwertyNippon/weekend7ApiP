@@ -107,7 +107,7 @@ async function checkWeather(city) {
         weatherIcon.src = cloudsImage;
     }
     else if(data.weather[0].main === 'Clear'){
-        clearImage;
+        weatherIcon.src = clearImage;
 
     }
     
