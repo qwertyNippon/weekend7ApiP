@@ -103,8 +103,8 @@ async function checkWeather(city) {
     document.querySelector('.humidity').innerHTML = data.main.humidity + '%';
     document.querySelector('.wind').innerHTML = data.wind.speed + 'km/h';
 
-    if(data.weather[0].main = 'Clouds'){
-        cloudsImage;
+    if(data.weather[0].main === 'Clouds'){
+        weatherIcon.src = cloudsImage;
     }
     else if(data.weather[0].main === 'Clear'){
         clearImage;
@@ -112,20 +112,20 @@ async function checkWeather(city) {
     }
     
     else if(data.weather[0].main === 'Rain'){
-        rainImage;
+        weatherIcon.src = rainImage;
 
     }
     
     else if(data.weather[0].main === 'Drizzle'){
-        drizzleImage;
+        weatherIcon.src = drizzleImage;
 
     }
     else if(data.weather[0].main === 'Mist'){
-        mistImage;
+        weatherIcon.src = mistImage;
 
     }
     else if(data.weather[0].main === 'Snow'){
-        snowImage;
+        weatherIcon.src = snowImage;
 
     }
 
@@ -160,6 +160,6 @@ searchBtn.addEventListener('click', ()=> {
 
 window.onload = function() {
     findMyCity()
-    checkWeather(city)
+    // checkWeather(city)
 };
 
